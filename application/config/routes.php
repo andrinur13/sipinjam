@@ -75,6 +75,7 @@ $route['peminjaman/setujui/(:num)'] = 'peminjaman/PeminjamanController/setujuiPe
 // admin
 $route['admin/peminjaman'] = 'user/UserController/admin_peminjaman';
 $route['admin/kelola'] = 'user/UserController/admin_kelola';
+$route['admin/kelola/tambah'] = 'user/UserController/admin_kelola_tambah';
 
 
 

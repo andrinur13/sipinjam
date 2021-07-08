@@ -11,7 +11,7 @@ class UserController extends CI_Controller
 		$this->load->model('FasilitasModel');
 		$this->load->model('PeminjamanModel');
 
-		if(!$this->session->userdata('email')) {
+		if (!$this->session->userdata('email')) {
 			return redirect('auth/login');
 		}
 	}
@@ -37,12 +37,11 @@ class UserController extends CI_Controller
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('user/mahasiswa/pinjam_mahasiswa', $data);
 		$this->load->view('templates/footer');
-
 	}
 
 	public function mahasiswa_pinjam_detail($id_fasilitas)
 	{
-		
+
 		$data['title'] = 'Si Pinjam';
 		$data['user'] = $this->UserModel->getUserByEmail($this->session->userdata('email'));
 		$data['fasilitas'] = $this->FasilitasModel->getFasilitasByID($id_fasilitas);
@@ -86,7 +85,8 @@ class UserController extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
-	public function admin_peminjaman() {
+	public function admin_peminjaman()
+	{
 		$data['title'] = 'Si Pinjam';
 		$dataUser = $this->UserModel->getUserByEmail($this->session->userdata('email'));
 		$data['peminjaman'] = $this->PeminjamanModel->getAllPeminjaman();
@@ -97,7 +97,8 @@ class UserController extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
-	public function admin_kelola() {
+	public function admin_kelola()
+	{
 		$data['title'] = 'Si Pinjam';
 		$dataUser = $this->UserModel->getUserByEmail($this->session->userdata('email'));
 		$data['fasilitas'] = $this->FasilitasModel->getAllFasilitas();
@@ -108,5 +109,16 @@ class UserController extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
-	
+	public function admin_kelola_tambah()
+	{
+		$dataInputan = [
+			'nama_fasilitas' => $this->input->post('name'),
+			'ready_amount' => $this->input->post('jumlah'),
+			'total_amount' => $this->input->post('jumlah')
+		];
+
+		$this->FasilitasModel->addFasilitas($dataInputan);
+
+		return redirect('admin/kelola');
+	}
 }

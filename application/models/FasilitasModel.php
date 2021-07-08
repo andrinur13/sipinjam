@@ -33,4 +33,8 @@ class FasilitasModel extends CI_Model
 
         return;
     }
+
+    public function addFasilitas($data) {
+        return $this->db->insert('fasilitas', $data);
+    }
 }
