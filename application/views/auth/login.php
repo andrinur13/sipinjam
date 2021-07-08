@@ -1,6 +1,6 @@
 <div class="container">
-  <div class=" h-100 d-flex row justify-content-center m-4">
-    <div class="col-4 border card shadow p-4">
+  <div class="row justify-content-center m-4">
+    <div class="col-lg-4 col-md-6 border card shadow p-4">
 
       <div class="mb-3">
         <img src="https://png.pngtree.com/png-vector/20190114/ourlarge/pngtree-abstract-colorful-logo-3d-modern-icon-concept-png-image_313249.jpg" class="img-fluid mx-auto d-block" style="height: 200px" alt="">

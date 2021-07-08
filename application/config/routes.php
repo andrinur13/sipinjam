@@ -55,7 +55,28 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['auth/login'] = 'auth/AuthController/index';
 $route['auth/register'] = 'auth/AuthController/register';
+$route['auth/logout'] = 'auth/AuthController/logout';
 $route['user'] = 'user/UserController/index';
 $route['loginproses'] = 'auth/AuthController/loginProses';
 $route['registerproses'] = 'auth/AuthController/registerProses';
+
+// route beranda
+$route['dosen'] = 'user/UserController/dosen';
+
+$route['mahasiswa'] = 'user/UserController/mahasiswa';
+$route['mahasiswa/pinjam'] = 'user/UserController/mahasiswa_pinjam';
+$route['mahasiswa/status'] = 'user/UserController/mahasiswa_status';
+$route['mahasiswa/pinjam/(:num)'] = 'user/UserController/mahasiswa_pinjam_detail/$1';
+
+// peminjaman
+$route['peminjaman/proses'] = 'peminjaman/PeminjamanController/prosesPeminjaman';
+$route['peminjaman/setujui/(:num)'] = 'peminjaman/PeminjamanController/setujuiPeminjaman/$1';
+
+// admin
+$route['admin/peminjaman'] = 'user/UserController/admin_peminjaman';
+$route['admin/kelola'] = 'user/UserController/admin_kelola';
+
+
+
+$route['staff'] = 'user/UserController/staff';
 

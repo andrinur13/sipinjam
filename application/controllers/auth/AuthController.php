@@ -39,7 +39,30 @@ class AuthController extends CI_Controller
             return redirect('auth/login');
         } else {
             if (password_verify($passwordInput, $dataUserLogin['password'])) {
-                echo "password smaa";
+                // cek user level
+                $status = $dataUserLogin['status'];
+
+                if($status == 'mahasiswa') {
+                    // larikan ke mahasiswa
+                    $this->session->set_userdata('email', $dataUserLogin['email']);
+                    $this->session->set_userdata('status', $dataUserLogin['mahasiswa']);
+                    return redirect('mahasiswa');
+                } else if($status == 'dosen') {
+                    // larikan ke dosen
+                    $this->session->set_userdata('email', $dataUserLogin['email']);
+                    $this->session->set_userdata('status', $dataUserLogin['dosen']);
+                    return redirect('dosen');
+                } else if($status == 'staff') {
+                    // larikan ke staff
+                    $this->session->set_userdata('email', $dataUserLogin['email']);
+                    $this->session->set_userdata('status', $dataUserLogin['staff']);
+                    return redirect('staff');
+                } else if($status == 'admin') {
+                    // larikan ke admin
+                    $this->session->set_userdata('email', $dataUserLogin['email']);
+                    $this->session->set_userdata('status', $dataUserLogin['admin']);
+                    return redirect('admin');
+                }
             } else {
 
                 $this->session->set_flashdata('error', '
@@ -53,6 +76,11 @@ class AuthController extends CI_Controller
                 return redirect('auth/login');
             }
         }
+    }
+
+    public function logout() {
+        $this->session->sess_destroy();
+        return redirect('auth/login');
     }
 
     public function register()
